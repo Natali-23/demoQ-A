@@ -4,6 +4,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -93,6 +94,16 @@ public NewPersonPage password(String password){
     public void registerButton(){
         driver.findElement(registerButtonLocator).click();
 
+    }
+
+    @Step("успешный вход на сайт")
+    public boolean isEnterSiteSuccess(String site){
+        try {
+wait.until(ExpectedConditions.urlToBe(site));
+            return true;
+        } catch (TimeoutException e){
+            return false;
+        }
     }
 
 }

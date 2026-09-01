@@ -3,6 +3,7 @@ package org.example.Tests;
 import io.qameta.allure.*;
 import org.example.BaseTest;
 import org.example.PageOgjects.NewPersonPage;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,14 +24,14 @@ public void setUp() {
 @Severity(SeverityLevel.BLOCKER)
     public void newPersonTest(){
     newPersonPage.site("https://demoqa.ru/bank/register");
-   newPersonPage.firstName("Ivan")
-           .lastName("Ivanov")
+   newPersonPage.firstName("IvanTestUser")
+           .lastName("IvanovTestUser")
            .email("test@mail.ru")
            .username("test")
            .password("testpassword")
            .confirmPassword("testpassword")
            .registerButton();
-
+    Assertions.assertTrue(newPersonPage.isEnterSiteSuccess("https://demoqa.ru/bank"));
 }
 
 }
