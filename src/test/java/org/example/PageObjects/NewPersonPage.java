@@ -32,11 +32,13 @@ public class NewPersonPage {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(registerButtonLocator));
         return !element.isEnabled();
     }
+
     @Step("проверка что пароли не совпадают")
     public boolean isPasswordDontMatch() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(PasswordDontMatchLocator));
         return true;
     }
+
     @Step("Открытие страницы регистрации")
     public NewPersonPage site(String site) {
         driver.get(site);

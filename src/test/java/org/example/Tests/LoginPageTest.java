@@ -3,7 +3,7 @@ package org.example.Tests;
 
 import io.qameta.allure.*;
 import org.example.BaseTest;
-import org.example.PageOgjects.LoginPage;
+import org.example.PageObjects.LoginPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -31,7 +31,7 @@ public class LoginPageTest extends BaseTest {
                 .username("testuser")
                 .password("password")
                 .enterButton();
-Assertions.assertTrue(loginPage.isEnterSiteSuccess("https://demoqa.ru/bank"),"Переход в личный кабинет не выполнен после ввода верных данных");
+        Assertions.assertTrue(loginPage.isEnterSiteSuccess("https://demoqa.ru/bank"), "Переход в личный кабинет не выполнен после ввода верных данных");
     }
 
     @ParameterizedTest(name = "Запуск #{index}: Проверка с паролем [{0}]")
@@ -46,7 +46,6 @@ Assertions.assertTrue(loginPage.isEnterSiteSuccess("https://demoqa.ru/bank"),"П
                 .password(wrongPassword)
                 .enterButton();
         Assertions.assertTrue(loginPage.isErrorMessageDisplayed(), "Сообщение об ошибке не появилось после ввода неверного пароля");
-
     }
 
 

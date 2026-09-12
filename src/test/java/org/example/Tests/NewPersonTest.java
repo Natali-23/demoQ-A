@@ -168,7 +168,7 @@ public class NewPersonTest extends BaseTest {
                 .password("1234")
                 .confirmPassword("4321");
 
-        Assertions.assertTrue(newPersonPage.isPasswordDontMatch(),"Ошибка о несовпадении паролей не появилась");
+        Assertions.assertTrue(newPersonPage.isPasswordDontMatch(), "Ошибка о несовпадении паролей не появилась");
         Assertions.assertTrue(newPersonPage.isRegisterButtonDisplayed(), "Кнопка регистрации осталась активной!");
         Assertions.assertTrue(
                 newPersonPage.isRegistrationFail("https://demoqa.ru/bank"),
