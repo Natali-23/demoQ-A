@@ -20,7 +20,7 @@ public class NewPersonPage {
     private final By confirmPasswordLocator = By.id("confirmPassword");
     private final By registerButtonLocator =
             By.xpath("//button[@data-testid = 'register-submit']");
-    private final By PasswordDontMatchLocator = By.xpath("//*[@data-testid='register-confirm-password-error']");
+    private final By passwordDontMatchLocator = By.xpath("//*[@data-testid='register-confirm-password-error']");
 
     public NewPersonPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -35,7 +35,7 @@ public class NewPersonPage {
 
     @Step("проверка что пароли не совпадают")
     public boolean isPasswordDontMatch() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(PasswordDontMatchLocator));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(passwordDontMatchLocator));
         return true;
     }
 

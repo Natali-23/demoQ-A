@@ -2,6 +2,7 @@ package org.example.Tests;
 
 import io.qameta.allure.*;
 import org.example.BaseTest;
+import org.example.LinksUrl;
 import org.example.PageObjects.NewPersonPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,7 +26,7 @@ public class NewPersonTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     public void newPersonSuccessTest() {
 
-        newPersonPage.site("https://demoqa.ru/bank/register")
+        newPersonPage.site(LinksUrl.REGISTRURL)
                 .firstName("IvanTestUser")
                 .lastName("IvanovTestUser")
                 .email("test@mail.ru")

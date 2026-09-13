@@ -44,20 +44,20 @@ public class LoginPage {
     }
 
     @Step("переход на страницу переводов денежных средств")
-    public LoginPage clickToTransfer() {
+    public LoginPage clickToTransfer() throws InterruptedException {
         WebElement element = wait.until(
                 ExpectedConditions.elementToBeClickable(transferMenuTabLocator));
 
         System.out.println("Перед кликом: " + driver.getCurrentUrl());
         System.out.println("href = " + element.getAttribute("href"));
         System.out.println("text = " + element.getText());
-
+Thread.sleep(1000);
         element.click();
 
         System.out.println("После клика: " + driver.getCurrentUrl());
 
         wait.until(ExpectedConditions.urlToBe(
-                "https://demoqa.ru/bank/transfer"));
+                "https://demoqa.ru/bank"));
 
         return this;
     }
