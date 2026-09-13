@@ -18,6 +18,7 @@ public class NewPersonTest extends BaseTest {
     @BeforeEach
     public void setUp() {
         newPersonPage = new NewPersonPage(getDriver(), getWait());
+        newPersonPage.site(LinksUrl.REGISTRURL);
     }
 
     @Test
@@ -26,7 +27,7 @@ public class NewPersonTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     public void newPersonSuccessTest() {
 
-        newPersonPage.site(LinksUrl.REGISTRURL)
+        newPersonPage
                 .firstName("IvanTestUser")
                 .lastName("IvanovTestUser")
                 .email("test@mail.ru")
@@ -47,7 +48,6 @@ public class NewPersonTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     public void registrationWithoutFirstNameTest() {
         newPersonPage
-                .site("https://demoqa.ru/bank/register")
                 .firstName("")
                 .lastName("Ivanov")
                 .email("test@mail.ru")
@@ -66,7 +66,6 @@ public class NewPersonTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     public void registrationWithoutLastNameTest() {
         newPersonPage
-                .site("https://demoqa.ru/bank/register")
                 .firstName("Ivan")
                 .lastName("")
                 .email("test@mail.ru")
@@ -85,7 +84,6 @@ public class NewPersonTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     public void registrationWithoutEmailTest() {
         newPersonPage
-                .site("https://demoqa.ru/bank/register")
                 .firstName("Ivan")
                 .lastName("Ivanov")
                 .email("")
@@ -94,7 +92,7 @@ public class NewPersonTest extends BaseTest {
                 .confirmPassword("pass123")
                 .registerButton();
         Assertions.assertTrue(
-                newPersonPage.isRegistrationFail("https://demoqa.ru/bank"),
+                newPersonPage.isRegistrationFail(LinksUrl.BASICURL),
                 "Регистрация прошла успешно");
     }
 
@@ -104,7 +102,6 @@ public class NewPersonTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     public void registrationWithWrongEmailTest() {
         newPersonPage
-                .site("https://demoqa.ru/bank/register")
                 .firstName("Ivan")
                 .lastName("Ivanov")
                 .email("test.tu")
@@ -113,7 +110,7 @@ public class NewPersonTest extends BaseTest {
                 .confirmPassword("pass123")
                 .registerButton();
         Assertions.assertTrue(
-                newPersonPage.isRegistrationFail("https://demoqa.ru/bank"),
+                newPersonPage.isRegistrationFail(LinksUrl.BASICURL),
                 "Регистрация прошла успешно");
     }
 
@@ -123,7 +120,6 @@ public class NewPersonTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     public void registrationWithoutUsernameTest() {
         newPersonPage
-                .site("https://demoqa.ru/bank/register")
                 .firstName("Ivan")
                 .lastName("Ivanov")
                 .email("test@mail.ru")
@@ -132,7 +128,7 @@ public class NewPersonTest extends BaseTest {
                 .confirmPassword("pass123")
                 .registerButton();
         Assertions.assertTrue(
-                newPersonPage.isRegistrationFail("https://demoqa.ru/bank"),
+                newPersonPage.isRegistrationFail(LinksUrl.BASICURL),
                 "Регистрация прошла успешно");
     }
 
@@ -142,7 +138,6 @@ public class NewPersonTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     public void registrationWithoutPasswordTest() {
         newPersonPage
-                .site("https://demoqa.ru/bank/register")
                 .firstName("Ivan")
                 .lastName("Ivanov")
                 .email("test@mail.ru")
@@ -151,7 +146,7 @@ public class NewPersonTest extends BaseTest {
                 .confirmPassword("")
                 .registerButton();
         Assertions.assertTrue(
-                newPersonPage.isRegistrationFail("https://demoqa.ru/bank"),
+                newPersonPage.isRegistrationFail(LinksUrl.BASICURL),
                 "Регистрация прошла успешно");
     }
 
@@ -161,7 +156,6 @@ public class NewPersonTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     public void registrationWithoutSamePasswordTest() {
         newPersonPage
-                .site("https://demoqa.ru/bank/register")
                 .firstName("Ivan")
                 .lastName("Ivanov")
                 .email("test@mail.ru")
@@ -172,7 +166,7 @@ public class NewPersonTest extends BaseTest {
         Assertions.assertTrue(newPersonPage.isPasswordDontMatch(), "Ошибка о несовпадении паролей не появилась");
         Assertions.assertTrue(newPersonPage.isRegisterButtonDisplayed(), "Кнопка регистрации осталась активной!");
         Assertions.assertTrue(
-                newPersonPage.isRegistrationFail("https://demoqa.ru/bank"),
+                newPersonPage.isRegistrationFail(LinksUrl.BASICURL),
                 "Регистрация прошла успешно");
 
     }
